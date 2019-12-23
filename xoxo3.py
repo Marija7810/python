@@ -45,7 +45,7 @@ class Board:
             board.who_first()
         return player
 
-    def winner(self, player, b):
+    def is_winner(self, player, b):
         if b[0] == player and b[1] == player and b[2] == player:
             return True
         elif b[3] == player and b[4] == player and b[5] == player:
@@ -104,7 +104,7 @@ class Board:
             board.update_cell(choice, player, b)
             refresh()
 
-            if board.winner(player):
+            if board.is_winner(player):
                 print("\n" + player + " je pobednik!\n")
                 play_again = board.again()
                 if play_again == "Y":
