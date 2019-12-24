@@ -42,16 +42,16 @@ class Test:
         b = xoxo3.Board()
         assert b.is_winner('x', test_input) == expected
 
-    @pytest.mark.parametrize("test_input1, expected1",
+    @pytest.mark.parametrize("test_input, expected",
                              [
                                  (["x", "x", "x", "o", "o", "o", "x", "x", "o"], True),
                                  (["x", "o", "x", "x", "o", "x", "x", "o", "o"], True),
                                  (["x", "x", "x", " ", " ", " ", "o", "x", "x"], False)
 
                              ])
-    def test_is_tie(self, test_input1, expected1):
+    def test_is_tie(self, test_input, expected):
         b = xoxo3.Board()
-        assert b.is_tie(test_input1) == expected1
+        assert b.is_tie(test_input) == expected
 
     def test_play_again(self):
         b = xoxo3.Board()
