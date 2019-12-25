@@ -30,28 +30,28 @@ class Test:
         assert b.who_first() == "X"
 
 
-    @pytest.mark.parametrize('par_board',
+    @pytest.mark.parametrize("test_input, expected",
                              [
-                                 (["x", "x", "x", " ", " ", " ", " ", " ", " "]),
-                                 (["x", " ", " ", "x", " ", " ", "x", " ", " "]),
-                                 (["x", " ", " ", " ", "x", " ", " ", " ", "x"])
+                                 (["x", "x", "x", " ", " ", " ", " ", " ", " "], True),
+                                 (["x", " ", " ", "x", " ", " ", "x", " ", " "], True),
+                                 ([" ", "x", " ", " ", " ", " ", " ", " ", "x"], False)
 
                              ])
 
-    def test_winner(self, par_board):
+    def test_is_winner(self, test_input, expected):
         b = xoxo3.Board()
-        assert b.winner('x', par_board)
+        assert b.is_winner('x', test_input) == expected
 
-    @pytest.mark.parametrize('par_board1',
+    @pytest.mark.parametrize("test_input, expected",
                              [
-                                 (["x", "x", "x", "o", "o", "o", "x", "x", "o"]),
-                                 (["x", "o", "x", "x", "o", "x", "x", "o", "o"]),
-                                 (["x", "o", "x", "o", "x", "x", "o", "x", "x"])
+                                 (["x", "x", "x", "o", "o", "o", "x", "x", "o"], True),
+                                 (["x", "o", "x", "x", "o", "x", "x", "o", "o"], True),
+                                 (["x", "x", "x", " ", " ", " ", "o", "x", "x"], False)
 
                              ])
-    def test_is_tie(self, par_board1):
+    def test_is_tie(self, test_input, expected):
         b = xoxo3.Board()
-        assert b.is_tie(par_board1)
+        assert b.is_tie(test_input) == expected
 
     def test_play_again(self):
         b = xoxo3.Board()
